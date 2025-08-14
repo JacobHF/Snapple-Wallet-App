@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bank App UI</title>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      border-radius: 20px;
+      overflow: hidden;
+      background-color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+    .card input[type="file"] {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .balance {
+      background-color: #111;
+      border-radius: 20px;
+      padding: 18px;
+      margin: 0 0 24px 0;
+      font-size: 1.3em;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    h2 {
+      margin: 20px 0 10px;
+      font-weight: 600;
+    }
+    .transaction {
+      background-color: #111;
+      padding: 12px 16px;
+      border-radius: 15px;
+      margin-bottom: 10px;
+    }
+    .transaction-title {
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+    }
+    .transaction-info {
+      font-size: 0.85em;
+      color: gray;
+      margin-top: 3px;
+    }
+    .editable {
+      border: none;
+      background: none;
+      color: white;
+      font: inherit;
+      text-align: right;
+      width: auto;
+      min-width: 60px;
+    }
+    .editable-label {
+      text-align: left;
+    }
+    .editable:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <img id="cardPreview" src="https://i.imgur.com/HWeZRGo.png" alt="Your card image">
+      <input type="file" accept="image/*" onchange="loadCardImage(event)">
+    </div>
+
+    <div class="balance">
+      Balance: <span contenteditable="true" class="editable">1000</span> kr.
+    </div>
+
+    <h2>Seneste transaktioner</h2>
+
+    <div class="transaction">
+      <div class="transaction-title">
+        <span contenteditable="true" class="editable editable-label">Vinted Go Locker</span>
+        <span contenteditable="true" class="editable">79,19</span> kr.
+      </div>
+      <div class="transaction-info">Apple Pay<br />Tirsdag</div>
+    </div>
+
+    <div class="transaction">
+      <div class="transaction-title">
+        <span contenteditable="true" class="editable editable-label">Hm Dk0872</span>
+        <span contenteditable="true" class="editable">129,00</span> kr.
+      </div>
+      <div class="transaction-info">Silkeborg, Region Midtjylland<br />Tirsdag</div>
+    </div>
+
+    <div class="transaction">
+      <div class="transaction-title">
+        <span contenteditable="true" class="editable editable-label">Normal</span>
+        <span contenteditable="true" class="editable">200,00</span> kr.
+      </div>
+      <div class="transaction-info">Silkeborg, Region Midtjylland<br />Tirsdag</div>
+    </div>
+
+    <div class="transaction">
+      <div class="transaction-title">
+        <span contenteditable="true" class="editable editable-label">Vinted Go Locker</span>
+        <span contenteditable="true" class="editable">226,06</span> kr.
+      </div>
+      <div class="transaction-info">Apple Pay<br />Mandag</div>
+    </div>
+
+    <div class="transaction">
+      <div class="transaction-title">
+        <span contenteditable="true" class="editable editable-label">Vinted Go Locker</span>
+        <span contenteditable="true" class="editable">177,75</span> kr.
+      </div>
+      <div class="transaction-info">Apple Pay<br />Mandag</div>
+    </div>
+
+    <div class="transaction">
+      <div class="transaction-title">
+        <span contenteditable="true" class="editable editable-label">365discount</span>
+        <span contenteditable="true" class="editable">17,90</span> kr.
+      </div>
+      <div class="transaction-info">Silkeborg, Region Midtjylland<br />Mandag</div>
+    </div>
+  </div>
+
+  <script>
+    function loadCardImage(event) {
+      const image = document.getElementById('cardPreview');
+      image.src = URL.createObjectURL(event.target.files[0]);
+    }
+  </script>
+</body>
+</html>
